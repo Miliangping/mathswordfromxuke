@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>数学常用英文词汇与表达 · 记忆卡</title>
+<style>
+  :root{
+    --bg:#f5f7fb; --card:#fff; --ink:#1e293b; --muted:#64748b; --line:#e2e8f0;
+    --accent:#4f46e5; --accent-soft:#eef2ff;
+    --ok:#059669; --ok-soft:#ecfdf5; --ok-line:#6ee7b7;
+    --bad:#dc2626; --bad-soft:#fef2f2; --bad-line:#fca5a5;
+    --star:#b45309; --star-soft:#fffbeb; --star-line:#fcd34d;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:var(--bg); color:var(--ink); min-height:100vh; line-height:1.55;
+    padding-bottom:40px;
+  }
+  .wrap{max-width:900px;margin:0 auto;padding:0 16px}
+
+  /* ---------- 顶栏 ---------- */
+  .topbar{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    padding:18px 0 14px;flex-wrap:wrap;
+  }
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{
+    width:44px;height:44px;border-radius:13px;flex:none;
+    background:linear-gradient(135deg,#6366f1,#8b5cf6);
+    color:#fff;display:flex;align-items:center;justify-content:center;
+    font-size:22px;font-weight:700;box-shadow:0 6px 16px rgba(99,102,241,.35);
+  }
+  .brand-title{font-size:17px;font-weight:700;letter-spacing:.2px}
+  .brand-sub{font-size:12px;color:var(--muted);letter-spacing:.3px}
+  .mode-switch{display:flex;background:#e9edf5;border-radius:12px;padding:4px;gap:2px}
+  .mode-btn{
+    border:0;background:transparent;padding:8px 16px;border-radius:9px;
+    font-size:13.5px;font-weight:600;color:var(--muted);cursor:pointer;
+    transition:.18s;font-family:inherit;white-space:nowrap;
+  }
+  .mode-btn.active{background:#fff;color:var(--accent);box-shadow:0 2px 6px rgba(15,23,42,.09)}
+
+  /* ---------- 首页 ---------- */
+  .home-head{margin:14px 0 16px}
+  .home-head h2{font-size:20px;font-weight:700}
+  .home-head .sub{font-size:13.5px;color:var(--muted);margin-top:4px}
+  .chapter-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:13px}
+  .chapter-card{
+    text-align:left;background:var(--card);border:1px solid var(--line);border-radius:15px;
+    padding:15px 16px;cursor:pointer;font-family:inherit;color:inherit;
+    transition:.18s;position:relative;overflow:hidden;
+  }
+  .chapter-card::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
+    background:linear-gradient(180deg,#6366f1,#a855f7);opacity:0;transition:.18s;
+  }
+  .chapter-card:hover{border-color:#c7d2fe;box-shadow:0 8px 22px rgba(79,70,229,.11);transform:translateY(-2px)}
+  .chapter-card:hover::before{opacity:1}
+  .ch-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px}
+  .ch-num{
+    font-size:10.5px;font-weight:800;letter-spacing:.5px;color:#fff;
+    background:linear-gradient(135deg,#6366f1,#8b5cf6);
+    padding:2px 8px;border-radius:6px;white-space:nowrap;
+  }
+  .ch-learned{font-size:11px;font-weight:700;color:var(--muted);white-space:nowrap}
+  .chapter-card.done{background:#fafdfb;border-color:#d1fae5}
+  .chapter-card.done .ch-learned{color:var(--ok)}
+  .chapter-card.done::before{background:linear-gradient(180deg,#34d399,#10b981);opacity:1}
+  .ch-zh{font-size:15.5px;font-weight:700;margin-bottom:3px}
+  .ch-en{font-size:12.8px;color:var(--muted);line-height:1.4;min-height:34px}
+  .ch-count{
+    display:inline-block;margin-top:9px;font-size:11.5px;font-weight:600;color:var(--accent);
+    background:var(--accent-soft);padding:2px 9px;border-radius:20px;
+  }
+  .chapter-card.done .ch-count{color:var(--ok);background:var(--ok-soft)}
+
+  /* ---------- 错词本入口 ---------- */
+  .review-card{
+    display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    background:linear-gradient(135deg,#fff7ed,#fef2f2);
+    border:1px solid #fed7aa;border-radius:15px;padding:15px 17px;margin-bottom:16px;
+    animation:pop .22s ease;
+  }
+  .review-card.empty{background:#fff;border-color:var(--line)}
+  .rc-main{min-width:0;flex:1 1 220px}
+  .rc-title{font-size:15px;font-weight:800;color:#9a3412}
+  .review-card.empty .rc-title{color:var(--ink)}
+  .rc-sub{font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.5}
+  .rc-btn{
+    flex:none;border:0;border-radius:12px;padding:11px 20px;
+    background:#ea580c;color:#fff;font-size:14px;font-weight:700;
+    cursor:pointer;font-family:inherit;transition:.16s;
+    box-shadow:0 6px 16px rgba(234,88,12,.28);white-space:nowrap;
+  }
+  .rc-btn:hover{background:#c2410c;transform:translateY(-1px)}
+  .rc-btn.sm{padding:10px 18px;font-size:13.5px}
+
+  /* ---------- 熟悉词条管理 ---------- */
+  .manager{margin-top:22px;background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden}
+  .manager summary{
+    cursor:pointer;padding:14px 17px;font-size:13.5px;font-weight:700;color:var(--ink);
+    list-style:none;display:flex;align-items:center;gap:7px;flex-wrap:wrap;
+  }
+  .manager summary::-webkit-details-marker{display:none}
+  .manager summary::before{
+    content:"▸";color:var(--accent);transition:transform .18s;display:inline-block;font-size:12px;
+  }
+  .manager[open] summary::before{transform:rotate(90deg)}
+  .manager.wrong summary::before{color:#ea580c}
+  .mg-hint{font-size:11.5px;color:var(--muted);font-weight:500}
+  .mg-body{padding:2px 14px 14px;border-top:1px solid var(--line)}
+  .mg-group{margin-top:14px}
+  .mg-title{font-size:12px;font-weight:800;color:var(--accent);margin-bottom:7px}
+  .mg-item{display:flex;align-items:center;gap:10px;padding:8px 11px;border-radius:9px;background:#f8fafc;margin-bottom:6px}
+  .mg-text{flex:1;min-width:0}
+  .mg-zh{font-size:13.5px;font-weight:700;word-break:break-word}
+  .mg-en{font-size:12.5px;color:var(--muted);word-break:break-word}
+  .mg-restore{
+    flex:none;border:1px solid #c7d2fe;background:#fff;color:var(--accent);
+    border-radius:8px;padding:5px 12px;font-size:12px;font-weight:700;
+    cursor:pointer;font-family:inherit;transition:.15s;
+  }
+  .mg-restore:hover{background:var(--accent-soft)}
+  .mg-restore.warm{border-color:#fdba74;color:#c2410c}
+  .mg-restore.warm:hover{background:#fff7ed}
+  .mg-foot{margin-top:15px;display:flex;gap:9px;justify-content:center;flex-wrap:wrap}
+  .mg-clear{
+    border:1px solid var(--line);background:#fff;color:var(--muted);
+    border-radius:9px;padding:8px 16px;font-size:12.5px;font-weight:700;
+    cursor:pointer;font-family:inherit;transition:.15s;
+  }
+  .mg-clear:hover{border-color:var(--bad-line);color:var(--bad)}
+  .err-badge{
+    display:inline-block;font-size:10.5px;font-weight:700;color:#b91c1c;
+    background:#fee2e2;border-radius:5px;padding:1px 6px;margin-left:6px;vertical-align:middle;
+  }
+  .err-badge.once{color:#b45309;background:#fef3c7}
+
+  /* ---------- 答题 ---------- */
+  .quiz-top{display:flex;align-items:center;gap:12px;margin:10px 0 10px}
+  .back-btn{
+    border:1px solid var(--line);background:#fff;border-radius:10px;padding:7px 13px;
+    font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;font-family:inherit;transition:.15s;
+    white-space:nowrap;
+  }
+  .back-btn:hover{border-color:#c7d2fe;color:var(--accent)}
+  .quiz-title{font-size:14px;font-weight:700;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .quiz-count{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+
+  .progress{height:6px;background:#e5e9f2;border-radius:99px;overflow:hidden;margin-bottom:20px}
+  .progress-fill{height:100%;background:linear-gradient(90deg,#6366f1,#a855f7);border-radius:99px;transition:width .3s}
+  .progress-fill.review{background:linear-gradient(90deg,#f97316,#ef4444)}
+
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:18px;
+    padding:30px 24px;text-align:center;box-shadow:0 10px 28px rgba(15,23,42,.055);
+    margin-bottom:16px;
+  }
+  .card-label{
+    font-size:12px;font-weight:700;letter-spacing:.6px;color:var(--accent);
+    background:var(--accent-soft);display:inline-block;padding:3px 11px;border-radius:20px;margin-bottom:16px;
+  }
+  .card-label.review{color:#c2410c;background:#fff7ed}
+  .prompt{
+    font-size:clamp(20px,4.6vw,30px);font-weight:700;line-height:1.35;
+    word-break:break-word;
+  }
+
+  .options{display:grid;gap:11px}
+  .option{
+    display:flex;align-items:center;gap:13px;width:100%;text-align:left;
+    background:#fff;border:1.6px solid var(--line);border-radius:14px;
+    padding:14px 16px;cursor:pointer;font-family:inherit;color:inherit;
+    font-size:16px;line-height:1.45;transition:.15s;
+  }
+  .option:not(.disabled):hover{border-color:#a5b4fc;background:#fafaff;transform:translateY(-1px)}
+  .badge{
+    flex:none;width:26px;height:26px;border-radius:8px;background:#f1f5f9;color:var(--muted);
+    display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:700;
+  }
+  .opt-text{flex:1;word-break:break-word}
+  .option.correct{border-color:var(--ok-line);background:var(--ok-soft)}
+  .option.correct .badge{background:var(--ok);color:#fff}
+  .option.wrong{border-color:var(--bad-line);background:var(--bad-soft)}
+  .option.wrong .badge{background:var(--bad);color:#fff}
+  .option.disabled{cursor:default}
+
+  /* ---------- 反馈 ---------- */
+  .feedback{
+    margin-top:16px;border-radius:16px;padding:18px 20px;
+    border:1.5px solid var(--line);background:#fff;animation:pop .22s ease;
+  }
+  @keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .feedback.ok{border-color:var(--ok-line);background:var(--ok-soft)}
+  .feedback.bad{border-color:var(--bad-line);background:var(--bad-soft)}
+  .fb-head{font-size:15px;font-weight:800;margin-bottom:12px}
+  .feedback.ok .fb-head{color:var(--ok)}
+  .feedback.bad .fb-head{color:var(--bad)}
+  .fb-row{font-size:14.5px;margin-bottom:7px}
+  .fb-row.muted{color:var(--muted);font-size:13.5px}
+  .fb-pair{font-size:14.5px;margin-top:5px;display:flex;gap:8px;align-items:flex-start}
+  .tag{
+    flex:none;font-size:11px;font-weight:700;padding:1px 7px;border-radius:6px;margin-top:2px;
+    background:#e2e8f0;color:#475569;
+  }
+  .fb-pair:first-of-type .tag{background:#dbeafe;color:#1d4ed8}
+  .fb-pair:nth-of-type(2) .tag{background:#fce7f3;color:#be185d}
+  .fb-ex{
+    margin-top:13px;padding:12px 14px;border-radius:11px;background:rgba(255,255,255,.85);
+    border-left:3px solid var(--accent);
+  }
+  .fb-ex-label{font-size:11px;font-weight:800;letter-spacing:.8px;color:var(--accent);margin-bottom:5px}
+  .fb-ex .en{font-size:14.5px;font-weight:600;font-style:italic;color:#334155;word-break:break-word}
+  .fb-ex .zh{font-size:13.5px;color:var(--muted);margin-top:5px}
+  .fb-tip{
+    margin-top:12px;font-size:13.5px;color:#7c2d12;background:#fff7ed;
+    border-radius:10px;padding:10px 13px;line-height:1.6;
+  }
+  .fb-actions{display:flex;gap:9px;margin-top:16px;flex-wrap:wrap}
+  .next-btn{
+    flex:1 1 160px;border:0;border-radius:12px;padding:13px;
+    background:var(--accent);color:#fff;font-size:15px;font-weight:700;
+    cursor:pointer;font-family:inherit;transition:.16s;box-shadow:0 6px 16px rgba(79,70,229,.3);
+  }
+  .next-btn:hover{background:#4338ca;transform:translateY(-1px)}
+  .known-btn{
+    flex:0 0 auto;border:1.5px solid var(--star-line);background:var(--star-soft);color:var(--star);
+    border-radius:12px;padding:13px 16px;font-size:14px;font-weight:700;
+    cursor:pointer;font-family:inherit;transition:.16s;white-space:nowrap;
+  }
+  .known-btn:hover{background:#fef3c7;transform:translateY(-1px)}
+
+  /* ---------- 结算 ---------- */
+  .result{background:#fff;border:1px solid var(--line);border-radius:20px;padding:34px 24px;text-align:center;margin-top:20px}
+  .result-emoji{font-size:48px;line-height:1}
+  .result h2{font-size:21px;margin:10px 0 8px}
+  .result .sub{font-size:13.5px;color:var(--muted);margin-bottom:18px}
+  .result-stats{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+  .result-stats>div{
+    background:#f8fafc;border:1px solid var(--line);border-radius:13px;
+    padding:12px 18px;min-width:80px;font-size:12.5px;color:var(--muted);font-weight:600;
+  }
+  .result-stats span{display:block;font-size:22px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums}
+  .result-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .primary-btn,.ghost-btn{
+    border-radius:12px;padding:12px 26px;font-size:14.5px;font-weight:700;
+    cursor:pointer;font-family:inherit;transition:.16s;
+  }
+  .primary-btn{border:0;background:var(--accent);color:#fff;box-shadow:0 6px 16px rgba(79,70,229,.3)}
+  .primary-btn:hover{background:#4338ca}
+  .primary-btn.warm{background:#ea580c;box-shadow:0 6px 16px rgba(234,88,12,.3)}
+  .primary-btn.warm:hover{background:#c2410c}
+  .ghost-btn{border:1.5px solid var(--line);background:#fff;color:var(--muted)}
+  .ghost-btn:hover{border-color:#c7d2fe;color:var(--accent)}
+
+  .wrong-list{margin-top:28px;text-align:left}
+  .wrong-list h3{font-size:14px;color:var(--muted);margin-bottom:11px;font-weight:700}
+  .wrong-item{
+    border:1px solid var(--line);border-left:3px solid var(--bad-line);border-radius:11px;
+    padding:11px 14px;margin-bottom:9px;background:#fff;
+  }
+  .wi-zh{font-size:14.5px;font-weight:700}
+  .wi-en{font-size:13.5px;color:var(--muted);margin-top:2px;word-break:break-word}
+
+  @media (max-width:520px){
+    .brand-title{font-size:15px}
+    .brand-sub{display:none}
+    .mode-btn{padding:7px 12px;font-size:12.5px}
+    .card{padding:24px 16px}
+    .option{font-size:15px;padding:13px 14px}
+    .quiz-title{font-size:13px}
+    .rc-btn{width:100%}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">∑</div>
+      <div>
+        <div class="brand-title">数学常用英文词汇与表达</div>
+        <div class="brand-sub">Mathematical English for Interviews</div>
+      </div>
+    </div>
+    <div class="mode-switch">
+      <button class="mode-btn active" data-dir="zh2en">中 → 英</button>
+      <button class="mode-btn" data-dir="en2zh">英 → 中</button>
+    </div>
+  </header>
+  <main id="view"></main>
+</div>
+
+<script>
+/* =========================================================
+   数据：章节 / 词条 / 例句 / 提示
+   ========================================================= */
+const RAW = [
+  {
+    zh:'通用符号与量词', en:'General Notation and Quantifiers',
+    items:[
+      ['x∈A','x belongs to A'],
+      ['x∉A','x does not belong to A'],
+      ['A⊆B','A is a subset of B'],
+      ['A⊂B','A is a proper subset of B'],
+      ['A∪B','A union B'],
+      ['A∩B','A intersection B'],
+      ['A\\B','A minus B'],
+      ['∅','the empty set'],
+      ['{0}','the set containing only zero'],
+      ['ℝ','the real numbers'],
+      ['ℂ','the complex numbers'],
+      ['ℚ','the rational numbers'],
+      ['ℤ','the integers'],
+      ['ℕ','the natural numbers'],
+      ['[a,b]','the closed interval from a to b'],
+      ['(a,b)','the open interval from a to b'],
+      ['[a,b)','the interval from a, inclusive, to b, exclusive'],
+      ['∀x','for every x',{ex:{en:'For every positive epsilon, there exists a positive delta such that the following implication holds.',zh:'对每个正数 ε，存在正数 δ，使下面的蕴含关系成立。'}}],
+      ['∃x','there exists an x'],
+      ['∃!x','there exists a unique x',{ex:{en:'There exists a unique real number x satisfying this equation.',zh:'存在唯一的实数 x 满足这个方程。'}}],
+      ['P→Q','P implies Q'],
+      ['P⇔Q','P if and only if Q'],
+      ['x≠y','x is not equal to y'],
+      ['x≤y','x is less than or equal to y'],
+      ['x≥y','x is greater than or equal to y'],
+      ['|x|','the absolute value of x'],
+      ['‖v‖','the norm of v'],
+      ['x²','x squared'],
+      ['x³','x cubed'],
+      ['x⁴','x to the fourth power'],
+      ['x⁻¹','x to the power negative one'],
+      ['√x','the square root of x'],
+      ['ⁿ√x','the n-th root of x'],
+      ['aₙ','a sub n'],
+      ['aᵢ','a sub i'],
+      ['aₙ₊₁','a sub n plus one',{tip:'aₙ₊₁ 指「下标为 n+1 的项」，口语可说 the term with index n plus one；注意与 aₙ + 1（a sub n, plus one）区分。'}],
+      ['(a+b)/n','the quantity a plus b, divided by n'],
+      ['n!','n factorial'],
+      ['∑(k=1..n) a_k','the sum from k equals one to n of a sub k'],
+      ['∏(k=1..n) a_k','the product from k equals one to n of a sub k'],
+      ['α, β, γ, δ','alpha, beta, gamma, delta'],
+      ['ε, λ, μ, σ','epsilon, lambda, mu, sigma'],
+      ['φ, ψ, θ, ω, Ω','phi, psi, theta, omega, capital omega']
+    ]
+  },
+  {
+    zh:'定义与证明的常用句型', en:'Definitions and Proofs',
+    items:[
+      ['定义','definition'],
+      ['记号','notation'],
+      ['定理','theorem'],
+      ['引理','lemma'],
+      ['推论','corollary'],
+      ['命题','proposition'],
+      ['猜想','conjecture'],
+      ['假设','assumption / hypothesis',{ex:{en:'We prove the two directions separately. First, assume that the stated condition holds.',zh:'我们分别证明两个方向。首先，假设给定条件成立。'}}],
+      ['结论','conclusion'],
+      ['充分条件','sufficient condition'],
+      ['必要条件','necessary condition',{tip:'「P is sufficient for Q」表示 P ⇒ Q；「P is necessary for Q」表示 Q ⇒ P。不要把 necessary 与 sufficient 的方向说反。'}],
+      ['充要条件','necessary and sufficient condition'],
+      ['等价','equivalence'],
+      ['逆命题','converse'],
+      ['逆否命题','contrapositive'],
+      ['反例','counterexample'],
+      ['矛盾','contradiction',{ex:{en:'This contradicts our assumption, so the proof is complete.',zh:'这与假设矛盾，因此证明完成。'}}],
+      ['归纳法','proof by induction',{ex:{en:'By the induction hypothesis, the claim holds for n. We now prove it for n plus one.',zh:'由归纳假设，结论对 n 成立。现在证明它对 n + 1 成立。'}}],
+      ['反证法','proof by contradiction',{ex:{en:'Suppose, for a contradiction, that the conclusion is false.',zh:'用反证法，假设结论不成立。'}}],
+      ['分类讨论','proof by cases'],
+      ['不失一般性','without loss of generality'],
+      ['任意的','arbitrary',{ex:{en:'Let epsilon be an arbitrary positive number.',zh:'任取正数 ε。'}}],
+      ['固定的','fixed'],
+      ['唯一的','unique'],
+      ['存在性','existence'],
+      ['唯一性','uniqueness'],
+      ['良定义的','well-defined'],
+      ['平凡的','trivial'],
+      ['非平凡的','nontrivial'],
+      ['证明','prove / show',{ex:{en:'It suffices to prove that the kernel is trivial.',zh:'只需证明核是平凡的。'}}],
+      ['推出','deduce / infer'],
+      ['验证','verify / check'],
+      ['构造','construct'],
+      ['选取','choose / take'],
+      ['代入','substitute'],
+      ['估计','estimate'],
+      ['上界','upper bound'],
+      ['下界','lower bound']
+    ]
+  },
+  {
+    zh:'分析：极限与连续', en:'Analysis: Limits and Continuity',
+    items:[
+      ['实数','real number'],
+      ['实值函数','real-valued function'],
+      ['定义域','domain'],
+      ['陪域','codomain'],
+      ['像集','image'],
+      ['极限','limit'],
+      ['趋于','tend to / approach'],
+      ['左极限','left-hand limit'],
+      ['右极限','right-hand limit'],
+      ['有限极限','finite limit'],
+      ['无穷极限','infinite limit'],
+      ['有界','bounded'],
+      ['无界','unbounded'],
+      ['有上界','bounded above'],
+      ['有下界','bounded below'],
+      ['上确界','supremum',{tip:'supremum 是最小上界，未必被取到；maximum 必须在集合中取到。可以说 E has supremum one，不能在尚未取到时说 E has maximum one。'}],
+      ['下确界','infimum'],
+      ['最大值','maximum',{ex:{en:'Since the interval is compact and the function is continuous, it attains its maximum and minimum.',zh:'因为区间是紧的且函数连续，它能取到最大值与最小值。'}}],
+      ['最小值','minimum'],
+      ['单调不减','nondecreasing'],
+      ['严格递增','strictly increasing',{tip:'strictly increasing 与 nondecreasing 要明确区分；increasing 单独使用时存在约定差异。'}],
+      ['单调不增','nonincreasing'],
+      ['严格递减','strictly decreasing'],
+      ['连续','continuous',{ex:{en:'The function is continuous at a and uniformly continuous on the interval.',zh:'这个函数在 a 处连续，并在该区间上一致连续。'}}],
+      ['不连续点','point of discontinuity'],
+      ['一致连续','uniformly continuous',{ex:{en:'Choose delta independently of the points x and y.',zh:'选择一个不依赖于点 x, y 的 δ。'}}],
+      ['Lipschitz 连续','Lipschitz continuous'],
+      ['邻域','neighborhood'],
+      ['去心邻域','punctured neighborhood'],
+      ['开集','open set'],
+      ['闭集','closed set'],
+      ['紧集','compact set'],
+      ['聚点','accumulation point'],
+      ['稠密子集','dense subset'],
+      ['介值定理','intermediate value theorem'],
+      ['最值定理','extreme value theorem'],
+      ['夹逼定理','squeeze theorem / sandwich theorem'],
+      ['lim f(x) = L (x→a)','the limit of f of x as x approaches a is L'],
+      ['x→a⁺','x approaches a from the right'],
+      ['x→∞','x tends to infinity'],
+      ['sup over E of |f(x)|','the supremum of the absolute value of f of x over x in E']
+    ]
+  },
+  {
+    zh:'分析：微分与积分', en:'Analysis: Differentiation and Integration',
+    items:[
+      ['导数','derivative'],
+      ['求导','differentiate / take the derivative',{tip:'求导用 differentiate，导数用 derivative；对某变量求导说 differentiate with respect to x，不说 about x。'}],
+      ['可导','differentiable'],
+      ['连续可导','continuously differentiable'],
+      ['高阶导数','higher-order derivative'],
+      ['偏导数','partial derivative'],
+      ['方向导数','directional derivative'],
+      ['梯度','gradient'],
+      ['微分','differential'],
+      ['全微分','total differential'],
+      ['链式法则','chain rule',{ex:{en:'Differentiate both sides with respect to x, and then apply the chain rule.',zh:'两边对 x 求导，然后使用链式法则。'}}],
+      ['乘积法则','product rule'],
+      ["Rolle 定理","Rolle's theorem"],
+      ['中值定理','mean value theorem',{ex:{en:'By the mean value theorem, there exists a point c between a and b such that f prime of c equals the difference quotient.',zh:'由中值定理，在 a, b 之间存在一点 c，使 f′(c) 等于对应的差商。'}}],
+      ['Taylor 展开','Taylor expansion'],
+      ['余项','remainder term'],
+      ['驻点','stationary point'],
+      ['局部极值','local extremum'],
+      ['凸函数','convex function',{tip:'英文凸凹用 convex / concave，最好同时明确不等式或二阶导数的符号。'}],
+      ['凹函数','concave function'],
+      ['原函数','antiderivative'],
+      ['不定积分','indefinite integral'],
+      ['定积分','definite integral'],
+      ['被积函数','integrand'],
+      ['积分上下限','limits of integration'],
+      ['黎曼可积','Riemann integrable'],
+      ['反常积分','improper integral'],
+      ['分部积分','integration by parts',{ex:{en:'Integrating by parts gives a boundary term and a new integral.',zh:'分部积分后得到一个边界项和一个新的积分。'}}],
+      ['换元积分','integration by substitution'],
+      ['微积分基本定理','fundamental theorem of calculus'],
+      ['重积分','multiple integral'],
+      ['迭代积分','iterated integral'],
+      ['f′(x)','f prime of x'],
+      ['f″(x)','f double prime of x'],
+      ['∂f/∂x','the partial derivative of f with respect to x'],
+      ['∫ from a to b of f(x) dx','the integral from a to b of f of x, with respect to x'],
+      ['∫ from 0 to ∞ of f(x) dx','the integral from zero to infinity of f of x, with respect to x']
+    ]
+  },
+  {
+    zh:'分析：数列、级数与函数列', en:'Analysis: Sequences and Series',
+    items:[
+      ['数列','sequence',{ex:{en:'The sequence is nondecreasing and bounded above, so it converges.',zh:'该数列单调不减且有上界，因此收敛。'}}],
+      ['子列','subsequence'],
+      ['通项','general term / n-th term'],
+      ['递推关系','recurrence relation'],
+      ['收敛','convergence / converge'],
+      ['发散','divergence / diverge'],
+      ['收敛数列','convergent sequence'],
+      ['Cauchy 列','Cauchy sequence'],
+      ['单调收敛定理（数列）','monotone convergence theorem for sequences'],
+      ['上极限','limit superior / limsup'],
+      ['下极限','limit inferior / liminf'],
+      ['级数','series',{tip:'sequence 是一列对象，series 是求和表达式，两者不要混用。'}],
+      ['部分和','partial sum'],
+      ['尾项和','tail of a series'],
+      ['几何级数','geometric series'],
+      ['调和级数','harmonic series'],
+      ['交错级数','alternating series'],
+      ['正项级数','positive-term series'],
+      ['绝对收敛','absolute convergence'],
+      ['条件收敛','conditional convergence',{ex:{en:'The series converges conditionally, but not absolutely.',zh:'该级数条件收敛，但不绝对收敛。'}}],
+      ['比较判别法','comparison test'],
+      ['极限比较法','limit comparison test'],
+      ['比值判别法','ratio test'],
+      ['根值判别法','root test'],
+      ['积分判别法','integral test'],
+      ['交错级数判别法','alternating series test'],
+      ['幂级数','power series'],
+      ['收敛半径','radius of convergence'],
+      ['收敛区间','interval of convergence'],
+      ['端点','endpoint'],
+      ['逐点收敛','pointwise convergence'],
+      ['一致收敛','uniform convergence',{ex:{en:'The error bound is independent of x, which establishes uniform convergence.',zh:'误差界与 x 无关，由此得到一致收敛。'}}],
+      ['一致 Cauchy 准则','uniform Cauchy criterion'],
+      ['逐项求导','term-by-term differentiation'],
+      ['逐项积分','term-by-term integration'],
+      ['交换极限与积分','interchange the limit and the integral'],
+      ['分部求和','summation by parts'],
+      ['望远镜求和','telescoping sum'],
+      ['∑ from n=1 of aₙ','the infinite series with n-th term a sub n'],
+      ['sup over E of |fₙ(x) − f(x)| → 0','the supremum over x in E of the absolute difference between f sub n of x and f of x tends to zero']
+    ]
+  },
+  {
+    zh:'代数：向量空间与线性映射', en:'Algebra: Vector Spaces and Linear Maps',
+    items:[
+      ['标量','scalar'],
+      ['向量','vector'],
+      ['向量空间','vector space'],
+      ['线性子空间','linear subspace'],
+      ['线性组合','linear combination'],
+      ['线性张成','linear span'],
+      ['生成集','spanning set'],
+      ['生成空间','span a space'],
+      ['线性无关','linearly independent',{tip:'随机变量的「独立」是 independent；向量的「线性无关」是 linearly independent，不要混用。'}],
+      ['线性相关','linearly dependent'],
+      ['基','basis',{ex:{en:'These vectors form a basis of V because they are linearly independent and span V.',zh:'这些向量线性无关且张成 V，因此构成 V 的一组基。'},tip:'basis 的复数是 bases；说 a basis of V 或 a basis for V 均可。'}],
+      ['标准基','standard basis'],
+      ['有序基','ordered basis'],
+      ['维数','dimension'],
+      ['有限维的','finite-dimensional'],
+      ['坐标向量','coordinate vector'],
+      ['换基','change of basis'],
+      ['直和','direct sum',{ex:{en:'Every vector in V can be written uniquely as a sum of a vector in U and a vector in W.',zh:'每个 V 中的向量都可以唯一表示成 U 中一个向量与 W 中一个向量之和。'}}],
+      ['补空间','complementary subspace'],
+      ['线性映射','linear map'],
+      ['线性变换','linear transformation'],
+      ['核','kernel / null space'],
+      ['像','image',{tip:'image 是实际取到的输出集合，codomain 是事先指定的目标空间，二者未必相等。'}],
+      ['单射','injective'],
+      ['满射','surjective'],
+      ['双射','bijective'],
+      ['同构','isomorphism'],
+      ['同构的','isomorphic'],
+      ['秩','rank'],
+      ['零度（核的维数）','nullity'],
+      ['秩与零度定理','rank-nullity theorem',{ex:{en:'By the rank-nullity theorem, the dimension of V equals the rank of T plus the nullity of T.',zh:'由秩与零度定理，V 的维数等于 T 的秩加上核的维数。'}}],
+      ['内积','inner product'],
+      ['正交','orthogonal'],
+      ['标准正交','orthonormal'],
+      ['正交补','orthogonal complement'],
+      ['正交投影','orthogonal projection'],
+      ['范数','norm'],
+      ['单位向量','unit vector'],
+      ['span{v1, …, vk}','the span of v one through v k'],
+      ['ker T / im T','the kernel of T / the image of T'],
+      ['V = U ⊕ W','V is the direct sum of U and W'],
+      ['dim V = n','V has dimension n / V is n-dimensional']
+    ]
+  },
+  {
+    zh:'代数：矩阵与特征值', en:'Algebra: Matrices and Eigenvalues',
+    items:[
+      ['矩阵','matrix',{tip:'复数形式：one matrix, two matrices。'}],
+      ['元素（矩阵项）','entry'],
+      ['行','row'],
+      ['列','column'],
+      ['行空间','row space'],
+      ['列空间','column space'],
+      ['方阵','square matrix'],
+      ['零矩阵','zero matrix'],
+      ['单位矩阵','identity matrix'],
+      ['对角矩阵','diagonal matrix',{ex:{en:'Choose a basis in which the matrix of this linear map is diagonal.',zh:'选择一组基，使这个线性映射的矩阵为对角矩阵。'}}],
+      ['上三角矩阵','upper triangular matrix'],
+      ['转置','transpose'],
+      ['共轭转置','conjugate transpose / Hermitian transpose'],
+      ['对称矩阵','symmetric matrix'],
+      ['斜对称矩阵','skew-symmetric matrix'],
+      ['Hermitian 矩阵','Hermitian matrix'],
+      ['酉矩阵','unitary matrix'],
+      ['正交矩阵','orthogonal matrix'],
+      ['可逆矩阵','invertible / nonsingular matrix'],
+      ['奇异矩阵','singular matrix'],
+      ['逆矩阵','inverse matrix'],
+      ['行列式','determinant'],
+      ['迹','trace'],
+      ['初等行变换','elementary row operation'],
+      ['行阶梯形','row echelon form'],
+      ['相似','similarity / similar',{tip:'相似是 B = P⁻¹AP；实二次型中的合同是 B = PᵀAP，两者不能混用。'}],
+      ['合同','congruence / congruent'],
+      ['特征值','eigenvalue'],
+      ['特征向量','eigenvector'],
+      ['特征子空间','eigenspace'],
+      ['不变子空间','invariant subspace'],
+      ['特征多项式','characteristic polynomial'],
+      ['最小多项式','minimal polynomial'],
+      ['代数重数','algebraic multiplicity',{ex:{en:'The eigenvalue has algebraic multiplicity three and geometric multiplicity two.',zh:'这个特征值的代数重数为 3，几何重数为 2。'}}],
+      ['几何重数','geometric multiplicity'],
+      ['可对角化','diagonalizable',{ex:{en:'A is diagonalizable over the complex numbers.',zh:'矩阵 A 在复数域上可对角化。'}}],
+      ['Jordan 标准形','Jordan canonical form'],
+      ['幂等','idempotent'],
+      ['幂零','nilpotent'],
+      ['对合','involution'],
+      ['正定','positive definite',{tip:'正定实对称矩阵满足 xᵀAx > 0 for every nonzero vector x。'}],
+      ['半正定','positive semidefinite'],
+      ['二次型','quadratic form'],
+      ['Aᵀ / A⁻¹ / P⁻¹AP','A transpose / A inverse / P inverse times A times P'],
+      ['Av = λv','A times v equals lambda times v'],
+      ['AB = BA','A and B commute'],
+      ['AB = −BA','A and B anticommute']
+    ]
+  },
+  {
+    zh:'代数：多项式、环与域', en:'Algebra: Polynomials, Rings and Fields',
+    items:[
+      ['多项式','polynomial'],
+      ['系数','coefficient'],
+      ['次数','degree'],
+      ['首项系数','leading coefficient'],
+      ['首一多项式','monic polynomial',{ex:{en:'Let p be a monic polynomial of degree n with real coefficients.',zh:'设 p 是一个 n 次首一实系数多项式。'}}],
+      ['常数项','constant term'],
+      ['零多项式','zero polynomial'],
+      ['常数多项式','constant polynomial'],
+      ['根','root',{ex:{en:'A nonzero polynomial of degree n has at most n distinct roots in a field.',zh:'域上的非零 n 次多项式至多有 n 个互异的根。'},tip:'a root of a polynomial 是多项式的根；the square root of x 是 x 的平方根，两者不要混。'}],
+      ['零点','zero'],
+      ['重根','repeated root / multiple root'],
+      ['单根','simple root'],
+      ['重数','multiplicity'],
+      ['因式','factor'],
+      ['分解因式','factorize / factor'],
+      ['整除','divide',{tip:'f | g 的方向是 f divides g，不要读反。'}],
+      ['商','quotient'],
+      ['余式','remainder'],
+      ['多项式除法','polynomial division'],
+      ['余式定理','remainder theorem'],
+      ['最大公因式','greatest common divisor (gcd)'],
+      ['互素','relatively prime / coprime'],
+      ['可约','reducible'],
+      ['不可约','irreducible',{ex:{en:'This polynomial is irreducible over the rationals, but reducible over the reals.',zh:'这个多项式在有理数域上不可约，但在实数域上可约。'},tip:'不可约性必须说明所处的域，例如 x² − 2 在 ℚ 上不可约，在 ℝ 上可约。'}],
+      ['插值','interpolation'],
+      ['Lagrange 插值','Lagrange interpolation'],
+      ['代数基本定理','fundamental theorem of algebra'],
+      ['环','ring'],
+      ['交换环','commutative ring'],
+      ['整环','integral domain'],
+      ['域','field'],
+      ['有限域','finite field'],
+      ['子域','subfield'],
+      ['单位元','identity element'],
+      ['可逆元','unit / invertible element',{tip:'unit 表示可逆元，不只是 identity element。'}],
+      ['零因子','zero divisor'],
+      ['理想','ideal'],
+      ['商环','quotient ring'],
+      ['环同态','ring homomorphism'],
+      ['域扩张','field extension'],
+      ['特征（域或环的特征）','characteristic'],
+      ['R[x] / F_p','the polynomial ring over the real numbers / the field with p elements'],
+      ['f | g / deg f = n','f divides g / f has degree n'],
+      ['(x − a)^m / f(a) = 0','x minus a, raised to the power m / a is a root of f']
+    ]
+  },
+  {
+    zh:'群论：基本对象与结构', en:'Group Theory: Basic Objects and Structure',
+    items:[
+      ['群','group'],
+      ['群运算','group operation'],
+      ['封闭性','closure'],
+      ['结合律','associativity'],
+      ['单位元','identity element'],
+      ['逆元','inverse element'],
+      ['交换群（阿贝尔群）','abelian group / commutative group'],
+      ['有限群','finite group'],
+      ['无限群','infinite group'],
+      ['平凡群','trivial group'],
+      ['非平凡子群','nontrivial subgroup'],
+      ['子群','subgroup'],
+      ['真子群','proper subgroup'],
+      ['循环群','cyclic group'],
+      ['生成元','generator'],
+      ['生成子群','generated subgroup'],
+      ['有限生成的','finitely generated'],
+      ['群的阶','order of a group',{tip:'群的 order 是元素个数，通常不说 degree。'}],
+      ['元素的阶','order of an element',{ex:{en:'If g has finite order, its order is the smallest positive integer n such that g to the power n is the identity.',zh:'若 g 的阶有限，它的阶是使 gⁿ = e 成立的最小正整数 n。'}}],
+      ['左陪集','left coset'],
+      ['右陪集','right coset'],
+      ['指数（子群的指数）','index of a subgroup',{ex:{en:'Let G be a finite group of order twelve, and let H be a subgroup of index three.',zh:'设 G 是一个 12 阶有限群，H 是它的指数为 3 的子群。'}}],
+      ['正规子群','normal subgroup'],
+      ['商群','quotient group / factor group',{ex:{en:'Since H is normal in G, the quotient group G modulo H is well-defined.',zh:'由于 H 在 G 中正规，商群 G/H 是良定义的。'}}],
+      ['直积','direct product'],
+      ['直因子','direct factor'],
+      ['中心','center'],
+      ['中心化子','centralizer'],
+      ['正规化子','normalizer'],
+      ['对称群','symmetric group'],
+      ['交错群','alternating group'],
+      ['二面体群','dihedral group',{tip:'二面体群的下标记法不统一，应明确其阶。'}],
+      ['置换','permutation'],
+      ['轮换','cycle'],
+      ['对换','transposition'],
+      ['H ≤ G','H is a subgroup of G'],
+      ['H ⊴ G','H is a normal subgroup of G'],
+      ['[G : H]','the index of H in G'],
+      ['G/H','G modulo H'],
+      ['⟨g⟩','the subgroup generated by g'],
+      ['Z(G)','the center of G'],
+      ['gH / Hg','the left coset gH / the right coset Hg']
+    ]
+  },
+  {
+    zh:'群论：同态、群作用与常用定理', en:'Group Theory: Homomorphisms and Group Actions',
+    items:[
+      ['同态','homomorphism'],
+      ['同构','isomorphism'],
+      ['自同态','endomorphism'],
+      ['自同构','automorphism'],
+      ['核','kernel',{ex:{en:'A group homomorphism is injective if and only if its kernel is trivial.',zh:'群同态是单射，当且仅当它的核平凡。'}}],
+      ['像','image'],
+      ['平凡核','trivial kernel'],
+      ['同构的群','isomorphic groups'],
+      ['共轭','conjugation'],
+      ['共轭元素','conjugate elements'],
+      ['共轭类','conjugacy class'],
+      ['类方程','class equation'],
+      ['群作用','group action'],
+      ['传递作用','transitive action'],
+      ['忠实作用','faithful action',{tip:'faithful action 指作用同态的核平凡；free action 指每个点的稳定子都平凡。忠实作用未必自由。'}],
+      ['自由作用','free action'],
+      ['轨道','orbit'],
+      ['稳定子','stabilizer'],
+      ['不动点','fixed point'],
+      ['不动点集','fixed-point set'],
+      ['轨道与稳定子定理','orbit-stabilizer theorem'],
+      ["Lagrange 定理","Lagrange's theorem",{ex:{en:"By Lagrange's theorem, the order of every subgroup divides the order of the finite group.",zh:'由 Lagrange 定理，每个子群的阶都整除这个有限群的阶。'}}],
+      ["Cauchy 定理","Cauchy's theorem"],
+      ['第一同构定理','first isomorphism theorem'],
+      ['Sylow 定理','Sylow theorems'],
+      ['Sylow 子群','Sylow subgroup',{ex:{en:'The Sylow p-subgroup is unique, and therefore normal.',zh:'这个 Sylow p-子群唯一，因此正规。'}}],
+      ['p-群','p-group'],
+      ['Sylow p-子群','Sylow p-subgroup'],
+      ['单群','simple group'],
+      ['可解群','solvable group'],
+      ['交换子','commutator'],
+      ['换位子群','commutator subgroup / derived subgroup'],
+      ['φ : G → K','phi is a map from G to K'],
+      ['ker φ = {e}','phi has trivial kernel'],
+      ['G/ker φ ≅ im φ','G modulo the kernel of phi is isomorphic to the image of phi'],
+      ['gxg⁻¹','g x g inverse / the conjugate of x by g'],
+      ['|G·x| = |G : Gₓ|','the size of the orbit of x equals the index of its stabilizer in G']
+    ]
+  },
+  {
+    zh:'概率：事件与条件概率', en:'Probability: Events and Conditional Probability',
+    items:[
+      ['随机试验','random experiment'],
+      ['样本空间','sample space'],
+      ['样本点','outcome / sample point'],
+      ['事件','event'],
+      ['基本事件','elementary event'],
+      ['必然事件','sure event'],
+      ['不可能事件','impossible event'],
+      ['概率','probability'],
+      ['概率测度','probability measure'],
+      ['补事件','complementary event'],
+      ['互斥事件','mutually exclusive / disjoint events'],
+      ['事件的并','union of events'],
+      ['事件的交','intersection of events'],
+      ['独立事件','independent events',{ex:{en:'Since A and B are independent, the probability of their intersection is the product of their probabilities.',zh:'由于 A, B 独立，它们的交的概率等于各自概率的乘积。'},tip:'独立不等于互斥：互斥且概率都为正的两个事件一定不独立。'}],
+      ['两两独立','pairwise independence'],
+      ['相互独立','mutual independence'],
+      ['条件概率','conditional probability',{tip:'P(A|B) = P(A∩B)/P(B) 要求 P(B) > 0。'}],
+      ['全概率公式','law of total probability',{ex:{en:'Condition on the outcome of the first trial, and then use the law of total probability.',zh:'对第一次试验的结果作条件化，然后使用全概率公式。'}}],
+      ["Bayes 公式","Bayes' theorem / Bayes' formula"],
+      ['先验概率','prior probability'],
+      ['后验概率','posterior probability'],
+      ['等可能的结果','equally likely outcomes'],
+      ['有放回抽样','sampling with replacement'],
+      ['无放回抽样','sampling without replacement'],
+      ['排列','permutation'],
+      ['组合','combination'],
+      ['恰好','exactly'],
+      ['至少','at least',{ex:{en:'What is the probability of obtaining at least two heads in five independent tosses of a fair coin?',zh:'将一枚均匀硬币独立抛掷五次，至少出现两次正面的概率是多少？'}}],
+      ['至多','at most'],
+      ['概率为 1','with probability one'],
+      ['概率为 0','with probability zero'],
+      ['P(A)','the probability of A'],
+      ['P(A | B)','the probability of A given B'],
+      ['P(A ∩ B)','the probability that both A and B occur'],
+      ['P(A ∪ B)','the probability that at least one of A and B occurs'],
+      ['C(n, k)','n choose k / the binomial coefficient n choose k']
+    ]
+  },
+  {
+    zh:'概率：随机变量与分布', en:'Probability: Random Variables and Distributions',
+    items:[
+      ['随机变量','random variable'],
+      ['随机向量','random vector'],
+      ['离散型','discrete'],
+      ['连续型','continuous'],
+      ['概率分布','probability distribution'],
+      ['分布律','probability mass function (PMF)'],
+      ['概率密度函数','probability density function (PDF)',{ex:{en:'For a random variable with a density, the probability of taking any particular value is zero.',zh:'具有概率密度的随机变量取任意指定值的概率都是 0。'},tip:'密度值不等于单点概率，且密度可以大于 1。'}],
+      ['累积分布函数（分布函数）','cumulative distribution function (CDF)'],
+      ['联合分布','joint distribution'],
+      ['边缘分布','marginal distribution',{ex:{en:'Obtain the marginal density by integrating the joint density with respect to the other variable.',zh:'将联合密度对另一个变量积分，得到边缘密度。'}}],
+      ['条件分布','conditional distribution'],
+      ['条件密度','conditional density'],
+      ['独立同分布','independent and identically distributed (i.i.d.)'],
+      ['伯努利分布','Bernoulli distribution'],
+      ['二项分布','binomial distribution'],
+      ['几何分布','geometric distribution',{tip:'几何分布有「首次成功所需试验次数」与「首次成功前失败次数」两种约定，要先说明。'}],
+      ['泊松分布','Poisson distribution'],
+      ['均匀分布','uniform distribution',{ex:{en:'Let X and Y be independent random variables, each uniformly distributed on the interval from zero to one.',zh:'设 X, Y 独立，且都在区间 [0,1] 上服从均匀分布。'}}],
+      ['指数分布','exponential distribution',{tip:'指数分布要说明参数是 rate（率）还是 scale（尺度）。'}],
+      ['正态分布（高斯分布）','normal distribution / Gaussian distribution'],
+      ['标准正态分布','standard normal distribution'],
+      ['参数','parameter'],
+      ['取值范围','range of possible values'],
+      ['分位数','quantile'],
+      ['中位数','median'],
+      ['众数','mode'],
+      ['尾概率','tail probability'],
+      ['无记忆性','memoryless property'],
+      ['X ~ Bin(n, p)','X has a binomial distribution with parameters n and p'],
+      ['X ~ N(μ, σ²)','X is normally distributed with mean mu and variance sigma squared'],
+      ['F_X(x) = P(X ≤ x)','F sub X of x is the probability that X is less than or equal to x']
+    ]
+  },
+  {
+    zh:'概率：数字特征与极限定理', en:'Probability: Moments and Limit Theorems',
+    items:[
+      ['数学期望','expectation / expected value'],
+      ['均值','mean'],
+      ['方差','variance',{ex:{en:'For independent random variables with finite second moments, the variance of the sum is the sum of the variances.',zh:'对具有有限二阶矩的独立随机变量，和的方差等于方差之和。'}}],
+      ['标准差','standard deviation'],
+      ['协方差','covariance'],
+      ['相关系数','correlation coefficient'],
+      ['不相关','uncorrelated',{tip:'独立且二阶矩有限可推出不相关，反之一般不成立。'}],
+      ['相关的','correlated'],
+      ['矩','moment'],
+      ['中心矩','central moment'],
+      ['条件期望','conditional expectation'],
+      ['全期望公式','law of total expectation'],
+      ['全方差公式','law of total variance'],
+      ['示性随机变量','indicator random variable'],
+      ['期望的线性性','linearity of expectation',{ex:{en:'By linearity of expectation, the expectation of the sum equals the sum of the expectations. Independence is not required.',zh:'由期望的线性性，和的期望等于期望之和；不要求独立。'}}],
+      ['矩母函数','moment-generating function'],
+      ['特征函数','characteristic function'],
+      ['大数定律','law of large numbers'],
+      ['中心极限定理','central limit theorem',{ex:{en:'For i.i.d. random variables with finite positive variance, the standardized sum converges in distribution to a standard normal random variable.',zh:'对具有有限正方差的独立同分布随机变量，标准化后的和依分布收敛到标准正态随机变量。'}}],
+      ["Markov 不等式","Markov's inequality"],
+      ["Chebyshev 不等式","Chebyshev's inequality"],
+      ['依概率收敛','convergence in probability'],
+      ['几乎处处收敛','almost sure convergence'],
+      ['几乎必然','almost surely (a.s.)',{tip:'almost surely 允许概率为 0 的例外；for every outcome 才表示每个样本点都成立。'}],
+      ['依分布收敛（弱收敛）','convergence in distribution (weak convergence)'],
+      ['均方收敛','mean-square convergence / convergence in L2'],
+      ['标准化','standardize'],
+      ['样本均值','sample mean'],
+      ['E[X] / E[X | Y]','the expectation of X / the conditional expectation of X given Y'],
+      ['Var(X) / Cov(X, Y)','the variance of X / the covariance of X and Y'],
+      ['1_A','the indicator of the event A'],
+      ['Xₙ → X in probability','X sub n converges in probability to X'],
+      ['Xₙ → X in distribution','X sub n converges in distribution to X']
+    ]
+  }
+];
+
+/* 展开成对象结构 */
+const CHAPTERS = RAW.map((c, ci) => ({
+  zh: c.zh,
+  en: c.en,
+  index: ci,
+  entries: c.items.map(([zh, en, extra]) => Object.assign({ zh, en }, extra || {}))
+}));
+
+/* 全局词条池（兜底干扰项） */
+const ALL_ENTRIES = [];
+CHAPTERS.forEach(c => c.entries.forEach(e => ALL_ENTRIES.push(e)));
+
+/* =========================================================
+   工具函数
+   ========================================================= */
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+
+function shuffle(arr){
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+/* =========================================================
+   「非常熟悉」存储（localStorage 持久化）
+   ========================================================= */
+const STORE_KEY = 'mathEnglish.learned.v1';
+let learned = {};
+try {
+  const raw = localStorage.getItem(STORE_KEY);
+  learned = raw ? (JSON.parse(raw) || {}) : {};
+  if (typeof learned !== 'object' || Array.isArray(learned)) learned = {};
+} catch (e) { learned = {}; }
+
+function saveLearned(){
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(learned)); } catch (e) {}
+}
+
+/* 章节的全部词条（含章节标题本身） */
+function chapterAllItems(idx){
+  const ch = CHAPTERS[idx];
+  return [{ zh: ch.zh, en: ch.en, _isTitle: true }].concat(ch.entries);
+}
+function validZhSet(idx){
+  return new Set(chapterAllItems(idx).map(e => e.zh));
+}
+function isLearned(idx, zh){
+  const arr = learned[String(idx)];
+  return !!(arr && arr.indexOf(zh) !== -1);
+}
+function markLearned(idx, zh){
+  const k = String(idx);
+  if (!learned[k]) learned[k] = [];
+  if (learned[k].indexOf(zh) === -1){ learned[k].push(zh); saveLearned(); }
+}
+function unmarkLearned(idx, zh){
+  const k = String(idx);
+  if (!learned[k]) return;
+  learned[k] = learned[k].filter(z => z !== zh);
+  if (!learned[k].length) delete learned[k];
+  saveLearned();
+}
+function learnedCount(idx){
+  const arr = learned[String(idx)] || [];
+  const valid = validZhSet(idx);
+  return arr.filter(z => valid.has(z)).length;
+}
+function totalLearned(){
+  let n = 0;
+  CHAPTERS.forEach((c, i) => { n += learnedCount(i); });
+  return n;
+}
+function learnedItemsOf(idx){
+  return chapterAllItems(idx).filter(e => isLearned(idx, e.zh));
+}
+
+/* =========================================================
+   ★ 错词本存储（新增）
+   ========================================================= */
+const WRONG_KEY = 'mathEnglish.wrongbook.v1';
+let wrongBook = {};   /* key = "章节号||中文" -> {ch, zh, count, streak, lastAt} */
+
+try {
+  const rawW = localStorage.getItem(WRONG_KEY);
+  wrongBook = rawW ? (JSON.parse(rawW) || {}) : {};
+  if (typeof wrongBook !== 'object' || Array.isArray(wrongBook)) wrongBook = {};
+} catch (e) { wrongBook = {}; }
+
+function saveWrong(){
+  try { localStorage.setItem(WRONG_KEY, JSON.stringify(wrongBook)); } catch (e) {}
+}
+function wbKey(chIdx, zh){ return chIdx + '||' + zh; }
+
+/* 答错：记入错词本；已存在则累加错误次数并重置连对计数 */
+function addWrong(chIdx, zh){
+  if (chIdx === null || chIdx === undefined) return;
+  const k = wbKey(chIdx, zh);
+  if (wrongBook[k]){
+    wrongBook[k].count += 1;
+    wrongBook[k].streak = 0;
+    wrongBook[k].lastAt = Date.now();
+  } else {
+    wrongBook[k] = { ch: chIdx, zh: zh, count: 1, streak: 0, lastAt: Date.now() };
+  }
+  saveWrong();
+}
+
+/* 答对 / 标记熟悉：移出错词本 */
+function removeWrong(chIdx, zh){
+  const k = wbKey(chIdx, zh);
+  if (wrongBook[k]){ delete wrongBook[k]; saveWrong(); }
+}
+
+function wrongTotal(){
+  return Object.keys(wrongBook).filter(k => CHAPTERS[wrongBook[k].ch]).length;
+}
+function wrongCountOf(chIdx, zh){
+  const e = wrongBook[wbKey(chIdx, zh)];
+  return e ? e.count : 0;
+}
+
+/* 按 (章节, 中文) 反查词条对象 */
+function lookupEntry(chIdx, zh){
+  const ch = CHAPTERS[chIdx];
+  if (!ch) return null;
+  if (ch.zh === zh) return { zh: ch.zh, en: ch.en, _isTitle: true };
+  return ch.entries.find(e => e.zh === zh) || null;
+}
+
+/* =========================================================
+   状态
+   ========================================================= */
+const state = {
+  dir: 'zh2en',
+  mode: 'chapter',        /* 'chapter' | 'review' */
+  chapter: null,
+  reviewRound: 1,
+  queue: [],              /* 元素: {entry, chIdx} */
+  pos: 0,
+  answered: false,
+  correct: 0,
+  wrong: 0,
+  wrongItems: [],
+  question: null,
+  manageOpen: false,
+  manageWrongOpen: false
+};
+
+const view = document.getElementById('view');
+
+/* =========================================================
+   出题
+   ========================================================= */
+function buildOptions(item, pool){
+  const key = state.dir === 'zh2en' ? 'en' : 'zh';
+  const correctText = item[key];
+  const used = new Set([correctText]);
+  const picks = [];
+
+  const tryAdd = cands => {
+    for (const e of cands){
+      if (picks.length >= 3) return;
+      const t = e[key];
+      if (!t || used.has(t)) continue;
+      used.add(t);
+      picks.push({ text: t, entry: e });
+    }
+  };
+
+  const primary = (pool && pool.length) ? pool : ALL_ENTRIES;
+  tryAdd(shuffle(primary.filter(e => e !== item)));
+  if (picks.length < 3) tryAdd(shuffle(ALL_ENTRIES.filter(e => e !== item)));
+
+  return shuffle([{ text: correctText, entry: item }].concat(picks));
+}
+
+/* =========================================================
+   首页
+   ========================================================= */
+function renderHome(){
+  /* 记住管理面板展开状态 */
+  const mgEl = document.getElementById('manager');
+  if (mgEl) state.manageOpen = mgEl.open;
+  const wmgEl = document.getElementById('wrong-manager');
+  if (wmgEl) state.manageWrongOpen = wmgEl.open;
+
+  state.mode = 'chapter';
+  state.chapter = null;
+  state.question = null;
+
+  const totalItems = CHAPTERS.reduce((s, c) => s + c.entries.length + 1, 0);
+  const learnedTotal = totalLearned();
+  const wt = wrongTotal();
+
+  view.innerHTML = `
+    <div class="home-head">
+      <h2>选择章节开始记忆</h2>
+      <p class="sub">共 ${CHAPTERS.length} 章 · ${totalItems} 个词条 · 已标记熟悉 ${learnedTotal} 个 · 错词 ${wt} 个 · 当前模式：${state.dir === 'zh2en' ? '看中文选英文' : '看英文选中文'}</p>
+    </div>
+
+    ${reviewBannerHTML(wt)}
+
+    <div class="chapter-grid">
+      ${CHAPTERS.map((c, i) => {
+        const all = c.entries.length + 1;
+        const lc = learnedCount(i);
+        const remain = all - lc;
+        const done = remain <= 0;
+        return `
+        <button class="chapter-card${done ? ' done' : ''}" data-ch="${i}">
+          <div class="ch-top">
+            <span class="ch-num">第 ${i + 1} 章</span>
+            <span class="ch-learned">${done ? '✓ 已全部熟悉' : (lc ? '已熟悉 ' + lc + '/' + all : '未开始')}</span>
+          </div>
+          <div class="ch-zh">${esc(c.zh)}</div>
+          <div class="ch-en">${esc(c.en)}</div>
+          <div class="ch-count">${done ? '全部已掌握，可在下方恢复' : remain + ' 个待记忆'}</div>
+        </button>`;
+      }).join('')}
+    </div>
+
+    ${wt ? wrongManagerHTML() : ''}
+    ${learnedTotal ? managerHTML() : ''}
+  `;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* 错词本入口卡片 */
+function reviewBannerHTML(n){
+  if (!n){
+    return `<div class="review-card empty">
+      <div class="rc-main">
+        <div class="rc-title">📕 错词本</div>
+        <div class="rc-sub">暂无错词 · 练习中答错的词条会自动收录，可反复复习直到全部掌握</div>
+      </div>
+    </div>`;
+  }
+  return `<div class="review-card">
+      <div class="rc-main">
+        <div class="rc-title">📕 错词本 · ${n} 个待巩固</div>
+        <div class="rc-sub">按轮次反复复习：答对即移出，答错留到下一轮，直到清空为止</div>
+      </div>
+      <button class="rc-btn" data-act="start-review">开始错词复习 →</button>
+    </div>`;
+}
+
+/* 错词本管理面板 */
+function wrongManagerHTML(){
+  const list = Object.keys(wrongBook)
+    .map(k => wrongBook[k])
+    .filter(w => CHAPTERS[w.ch])
+    .sort((a, b) => (b.count - a.count) || (a.ch - b.ch));
+
+  const rows = list.map(w => {
+    const e = lookupEntry(w.ch, w.zh) || { zh: w.zh, en: '' };
+    const cls = w.count > 1 ? 'err-badge' : 'err-badge once';
+    return `<div class="mg-item">
+      <div class="mg-text">
+        <div class="mg-zh">${esc(e.zh)}<span class="${cls}">错 ${w.count} 次</span></div>
+        <div class="mg-en">${esc(e.en)} · 第 ${w.ch + 1} 章</div>
+      </div>
+      <button class="mg-restore warm" data-wrong-remove="${w.ch}|${encodeURIComponent(w.zh)}">移除</button>
+    </div>`;
+  }).join('');
+
+  return `<details class="manager wrong" id="wrong-manager" ${state.manageWrongOpen ? 'open' : ''}>
+    <summary>错词本 · 共 ${list.length} 个 <span class="mg-hint">（点开可查看 / 移除）</span></summary>
+    <div class="mg-body">
+      ${rows}
+      <div class="mg-foot">
+        <button class="rc-btn sm" data-act="start-review">开始错词复习</button>
+        <button class="mg-clear" data-act="clear-wrong">清空错词本</button>
+      </div>
+    </div>
+  </details>`;
+}
+
+function managerHTML(){
+  const groups = CHAPTERS.map((c, i) => {
+    const items = learnedItemsOf(i);
+    if (!items.length) return '';
+    return `<div class="mg-group">
+      <div class="mg-title">第 ${i + 1} 章 · ${esc(c.zh)}（${items.length}）</div>
+      ${items.map(e => `
+        <div class="mg-item">
+          <div class="mg-text">
+            <div class="mg-zh">${esc(e.zh)}</div>
+            <div class="mg-en">${esc(e.en)}</div>
+          </div>
+          <button class="mg-restore" data-restore="${i}|${encodeURIComponent(e.zh)}">恢复</button>
+        </div>`).join('')}
+    </div>`;
+  }).join('');
+
+  return `<details class="manager" id="manager" ${state.manageOpen ? 'open' : ''}>
+    <summary>已熟悉词条管理 · 共 ${totalLearned()} 个 <span class="mg-hint">（点开可恢复或清空）</span></summary>
+    <div class="mg-body">
+      ${groups}
+      <div class="mg-foot"><button class="mg-clear" data-act="clear-all">清空全部熟悉标记</button></div>
+    </div>
+  </details>`;
+}
+
+/* =========================================================
+   开始章节练习
+   ========================================================= */
+function startChapter(idx){
+  const ch = CHAPTERS[idx];
+  state.mode = 'chapter';
+  state.chapter = ch;
+
+  const all = chapterAllItems(idx);
+  const remain = all.filter(it => !isLearned(idx, it.zh));
+
+  if (!remain.length){
+    renderAllLearned(ch);
+    return;
+  }
+
+  state.queue = shuffle(remain).map(entry => ({ entry, chIdx: idx }));
+  state.pos = 0;
+  state.correct = 0;
+  state.wrong = 0;
+  state.wrongItems = [];
+  state.question = null;
+  renderQuiz();
+}
+
+/* =========================================================
+   ★ 错词复习（多轮）
+   ========================================================= */
+function buildReviewQueue(){
+  const queue = [];
+  Object.keys(wrongBook).forEach(k => {
+    const w = wrongBook[k];
+    const e = lookupEntry(w.ch, w.zh);
+    if (e) queue.push({ entry: e, chIdx: w.ch });
+  });
+  return shuffle(queue);
+}
+
+function beginReviewRound(queue, round){
+  state.mode = 'review';
+  state.chapter = null;
+  state.reviewRound = round;
+  state.queue = queue;
+  state.pos = 0;
+  state.correct = 0;
+  state.wrong = 0;
+  state.wrongItems = [];
+  state.question = null;
+  renderQuiz();
+}
+
+function startReview(){
+  const q = buildReviewQueue();
+  if (!q.length) return;
+  beginReviewRound(q, 1);
+}
+
+/* =========================================================
+   渲染题目
+   ========================================================= */
+function renderQuiz(){
+  const q = state.queue[state.pos];
+  const entry = q.entry;
+  const chIdx = q.chIdx;
+  const key = state.dir === 'zh2en' ? 'en' : 'zh';
+  const promptKey = state.dir === 'zh2en' ? 'zh' : 'en';
+
+  const pool = CHAPTERS[chIdx] ? CHAPTERS[chIdx].entries : ALL_ENTRIES;
+  const options = buildOptions(entry, pool);
+
+  state.question = {
+    entry,
+    chIdx,
+    prompt: entry[promptKey],
+    answerText: entry[key],
+    options
+  };
+  state.answered = false;
+
+  const total = state.queue.length;
+  const pct = (state.pos / total) * 100;
+  const isReview = state.mode === 'review';
+
+  const title = isReview
+    ? `错词复习 · 第 ${state.reviewRound} 轮`
+    : `第 ${state.chapter.index + 1} 章 · ${esc(state.chapter.zh)}`;
+
+  view.innerHTML = `
+    <div class="quiz-top">
+      <button class="back-btn" data-act="back">← 返回</button>
+      <div class="quiz-title">${title}</div>
+      <div class="quiz-count">${state.pos + 1} / ${total}</div>
+    </div>
+    <div class="progress"><div class="progress-fill${isReview ? ' review' : ''}" style="width:${pct}%"></div></div>
+
+    <div class="card">
+      <div class="card-label${isReview ? ' review' : ''}">${entry._isTitle ? '章节标题 · ' : ''}${isReview ? '错词复习 · ' : ''}${state.dir === 'zh2en' ? '选出对应的英文' : '选出对应的中文'}</div>
+      <div class="prompt">${esc(state.question.prompt)}</div>
+    </div>
+
+    <div class="options">
+      ${options.map((o, i) => `
+        <button class="option" data-opt="${i}">
+          <span class="badge">${'ABCD'[i]}</span>
+          <span class="opt-text">${esc(o.text)}</span>
+        </button>`).join('')}
+    </div>
+
+    <div id="feedback"></div>
+  `;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* =========================================================
+   选择答案
+   ========================================================= */
+function selectOption(idx){
+  if (state.answered || !state.question) return;
+  const q = state.question;
+  if (idx < 0 || idx >= q.options.length) return;
+  state.answered = true;
+
+  const chosen = q.options[idx];
+  const isRight = chosen.text === q.answerText;
+
+  const entry = q.entry;
+  const chIdx = q.chIdx;
+
+  if (isRight){
+    state.correct++;
+    /* ★ 复习模式下答对 → 移出错词本 */
+    if (state.mode === 'review') removeWrong(chIdx, entry.zh);
+  } else {
+    state.wrong++;
+    state.wrongItems.push(entry);
+    /* ★ 答错 → 记入错词本（累计错误次数） */
+    addWrong(chIdx, entry.zh);
+  }
+
+  const btns = view.querySelectorAll('.option');
+  btns.forEach((b, i) => {
+    b.classList.add('disabled');
+    if (q.options[i].text === q.answerText) b.classList.add('correct');
+    if (i === idx && !isRight) b.classList.add('wrong');
+  });
+
+  let html = `<div class="feedback ${isRight ? 'ok' : 'bad'}">
+      <div class="fb-head">${isRight ? '✓ 回答正确' : '✗ 回答错误'}</div>`;
+
+  if (!isRight){
+    html += `<div class="fb-row">正确答案：<b>${esc(q.answerText)}</b></div>`;
+    const wrongEntry = chosen.entry;
+    const otherSide = state.dir === 'zh2en' ? wrongEntry.zh : wrongEntry.en;
+    html += `<div class="fb-row muted">你选了「${esc(chosen.text)}」，它对应的是「${esc(otherSide)}」</div>`;
+    const c = wrongCountOf(chIdx, entry.zh);
+    html += `<div class="fb-row muted">已加入错词本 · 该词累计错 ${c} 次${c > 1 ? '，将在后续轮次继续出现' : ''}</div>`;
+  } else if (state.mode === 'review'){
+    html += `<div class="fb-row muted">已从错词本中移除 ✓</div>`;
+  }
+
+  html += `<div class="fb-pair"><span class="tag">中</span><span>${esc(entry.zh)}</span></div>`;
+  html += `<div class="fb-pair"><span class="tag">英</span><span>${esc(entry.en)}</span></div>`;
+
+  if (entry.ex){
+    html += `<div class="fb-ex">
+        <div class="fb-ex-label">例 句</div>
+        <div class="en">${esc(entry.ex.en)}</div>
+        <div class="zh">${esc(entry.ex.zh)}</div>
+      </div>`;
+  }
+  if (entry.tip){
+    html += `<div class="fb-tip"><b>提示：</b>${esc(entry.tip)}</div>`;
+  }
+
+  const isLast = state.pos + 1 >= state.queue.length;
+  html += `<div class="fb-actions">
+      <button class="next-btn" data-act="next">${isLast ? (state.mode === 'review' ? '结束本轮 →' : '查看结果 →') : '继续 →'}</button>
+      <button class="known-btn" data-act="known" title="标记后该词条将不再出现在练习中，并从错词本移除">⭐ 非常熟悉</button>
+    </div></div>`;
+
+  document.getElementById('feedback').innerHTML = html;
+
+  const fb = document.querySelector('.feedback');
+  if (fb) fb.scrollIntoView({ behavior:'smooth', block:'nearest' });
+}
+
+/* =========================================================
+   下一题 / 结算
+   ========================================================= */
+function nextCard(){
+  state.pos++;
+  if (state.pos >= state.queue.length){
+    if (state.mode === 'review') renderReviewRoundEnd();
+    else renderResult();
+  } else {
+    renderQuiz();
+  }
+}
+
+/* ---------- 章节结算 ---------- */
+function renderResult(){
+  state.question = null;
+  const total = state.queue.length;
+  const acc = total ? Math.round((state.correct / total) * 100) : 0;
+  const emoji = acc >= 90 ? '🎉' : acc >= 60 ? '👍' : '💪';
+  const chIdx = state.chapter.index;
+  const all = state.chapter.entries.length + 1;
+  const lc = learnedCount(chIdx);
+  const wt = wrongTotal();
+
+  view.innerHTML = `
+    <div class="result">
+      <div class="result-emoji">${emoji}</div>
+      <h2>第 ${chIdx + 1} 章 · ${esc(state.chapter.zh)}</h2>
+      <p class="sub">本章已标记熟悉 ${lc} / ${all} 个词条${state.wrongItems.length ? ' · 本轮错词已加入错词本' : ''}</p>
+      <div class="result-stats">
+        <div><span>${total}</span>本次词条</div>
+        <div><span>${state.correct}</span>正确</div>
+        <div><span>${state.wrong}</span>错误</div>
+        <div><span>${acc}%</span>正确率</div>
+      </div>
+      <div class="result-actions">
+        <button class="primary-btn" data-act="again">再练一遍</button>
+        ${wt ? `<button class="primary-btn warm" data-act="start-review">复习错词（${wt}）</button>` : ''}
+        <button class="ghost-btn" data-act="back">返回章节</button>
+      </div>
+      ${state.wrongItems.length ? `
+        <div class="wrong-list">
+          <h3>本轮错词（${state.wrongItems.length}）· 已加入错词本</h3>
+          ${state.wrongItems.map(w => {
+            const c = wrongCountOf(chIdx, w.zh);
+            return `
+            <div class="wrong-item">
+              <div class="wi-zh">${esc(w.zh)}${c ? `<span class="err-badge${c > 1 ? '' : ' once'}">累计错 ${c} 次</span>` : ''}</div>
+              <div class="wi-en">${esc(w.en)}</div>
+            </div>`;
+          }).join('')}
+        </div>` : ''}
+    </div>
+  `;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ---------- 错词复习：一轮结束 ---------- */
+function renderReviewRoundEnd(){
+  state.question = null;
+  const round = state.reviewRound;
+  const total = state.queue.length;
+  const acc = total ? Math.round((state.correct / total) * 100) : 0;
+  const remainList = Object.keys(wrongBook).map(k => wrongBook[k]).filter(w => CHAPTERS[w.ch]);
+
+  /* 全部掌握 */
+  if (!remainList.length){
+    view.innerHTML = `
+      <div class="result">
+        <div class="result-emoji">🏆</div>
+        <h2>错词已全部掌握！</h2>
+        <p class="sub">共完成 ${round} 轮复习 · 本轮 ${total} 个词条，答对 ${state.correct} 个</p>
+        <div class="result-stats">
+          <div><span>${round}</span>复习轮次</div>
+          <div><span>${total}</span>本轮词条</div>
+          <div><span>${acc}%</span>本轮正确率</div>
+          <div><span>0</span>剩余错词</div>
+        </div>
+        <div class="result-actions">
+          <button class="primary-btn" data-act="back">返回首页</button>
+        </div>
+      </div>`;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return;
+  }
+
+  /* 仍有错词 → 进入下一轮 */
+  const items = remainList
+    .map(w => {
+      const e = lookupEntry(w.ch, w.zh) || { zh: w.zh, en: '' };
+      return { zh: e.zh, en: e.en, count: w.count, ch: w.ch };
+    })
+    .sort((a, b) => (b.count - a.count) || (a.ch - b.ch));
+
+  view.innerHTML = `
+    <div class="result">
+      <div class="result-emoji">📚</div>
+      <h2>第 ${round} 轮复习完成</h2>
+      <p class="sub">本轮 ${total} 个词条 · 答对 ${state.correct} 个 · 还有 <b>${remainList.length}</b> 个需要继续巩固</p>
+      <div class="result-stats">
+        <div><span>${total}</span>本轮词条</div>
+        <div><span>${state.correct}</span>答对（已移出）</div>
+        <div><span>${remainList.length}</span>留到下一轮</div>
+        <div><span>${acc}%</span>本轮正确率</div>
+      </div>
+      <div class="result-actions">
+        <button class="primary-btn warm" data-act="review-next-round">继续第 ${round + 1} 轮（${remainList.length} 个）→</button>
+        <button class="ghost-btn" data-act="back">返回首页</button>
+      </div>
+      <div class="wrong-list">
+        <h3>待巩固词条（${items.length}）</h3>
+        ${items.map(w => `
+          <div class="wrong-item">
+            <div class="wi-zh">${esc(w.zh)}<span class="err-badge${w.count > 1 ? '' : ' once'}">累计错 ${w.count} 次</span></div>
+            <div class="wi-en">${esc(w.en)} · 第 ${w.ch + 1} 章</div>
+          </div>`).join('')}
+      </div>
+    </div>
+  `;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* =========================================================
+   整章已熟悉
+   ========================================================= */
+function renderAllLearned(ch){
+  const all = ch.entries.length + 1;
+  view.innerHTML = `
+    <div class="quiz-top">
+      <button class="back-btn" data-act="back">← 章节</button>
+      <div class="quiz-title">第 ${ch.index + 1} 章 · ${esc(ch.zh)}</div>
+    </div>
+    <div class="result">
+      <div class="result-emoji">🌟</div>
+      <h2>本章 ${all} 个词条已全部标记为「非常熟悉」</h2>
+      <p class="sub">它们不会出现在练习中。若想重新练习，可恢复本章词条或前往管理面板单独恢复。</p>
+      <div class="result-actions">
+        <button class="primary-btn" data-act="restore-ch">恢复本章词条</button>
+        <button class="ghost-btn" data-act="back">返回章节</button>
+      </div>
+    </div>
+  `;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* =========================================================
+   事件绑定
+   ========================================================= */
+view.addEventListener('click', e => {
+  /* 恢复单个熟悉词条 */
+  const rBtn = e.target.closest('[data-restore]');
+  if (rBtn){
+    const raw = rBtn.getAttribute('data-restore');
+    const sep = raw.indexOf('|');
+    unmarkLearned(Number(raw.slice(0, sep)), decodeURIComponent(raw.slice(sep + 1)));
+    renderHome();
+    return;
+  }
+
+  /* 从错词本移除单个词 */
+  const wBtn = e.target.closest('[data-wrong-remove]');
+  if (wBtn){
+    const raw = wBtn.getAttribute('data-wrong-remove');
+    const sep = raw.indexOf('|');
+    removeWrong(Number(raw.slice(0, sep)), decodeURIComponent(raw.slice(sep + 1)));
+    renderHome();
+    return;
+  }
+
+  /* 进入章节 */
+  const chBtn = e.target.closest('[data-ch]');
+  if (chBtn){ startChapter(Number(chBtn.dataset.ch)); return; }
+
+  /* 选择选项 */
+  const optBtn = e.target.closest('[data-opt]');
+  if (optBtn){ selectOption(Number(optBtn.dataset.opt)); return; }
+
+  /* 操作按钮 */
+  const actBtn = e.target.closest('[data-act]');
+  if (actBtn){
+    const a = actBtn.dataset.act;
+
+    if (a === 'back'){ renderHome(); return; }
+
+    if (a === 'next'){ nextCard(); return; }
+
+    if (a === 'known'){
+      if (state.question){
+        const { entry, chIdx } = state.question;
+        if (chIdx !== null && chIdx !== undefined){
+          markLearned(chIdx, entry.zh);
+          removeWrong(chIdx, entry.zh);   /* ★ 标记熟悉即移出错词本 */
+        }
+      }
+      nextCard();
+      return;
+    }
+
+    if (a === 'again'){ startChapter(state.chapter.index); return; }
+
+    if (a === 'start-review'){ startReview(); return; }
+
+    if (a === 'review-next-round'){
+      const q = buildReviewQueue();
+      if (q.length) beginReviewRound(q, state.reviewRound + 1);
+      else renderHome();
+      return;
+    }
+
+    if (a === 'restore-ch'){
+      const items = learnedItemsOf(state.chapter.index);
+      items.forEach(it => unmarkLearned(state.chapter.index, it.zh));
+      renderHome();
+      return;
+    }
+
+    if (a === 'clear-wrong'){
+      if (confirm('确定要清空错词本吗？所有错词将不再出现在复习中。')){
+        wrongBook = {};
+        saveWrong();
+        renderHome();
+      }
+      return;
+    }
+
+    if (a === 'clear-all'){
+      if (confirm('确定要清空所有「非常熟悉」标记吗？所有词条将重新进入练习。')){
+        learned = {};
+        saveLearned();
+        renderHome();
+      }
+      return;
+    }
+  }
+});
+
+/* 记住管理面板的展开状态 */
+view.addEventListener('toggle', e => {
+  if (!e.target) return;
+  if (e.target.id === 'manager') state.manageOpen = e.target.open;
+  if (e.target.id === 'wrong-manager') state.manageWrongOpen = e.target.open;
+}, true);
+
+/* 记忆模式切换 */
+document.querySelectorAll('.mode-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const dir = btn.dataset.dir;
+    if (dir === state.dir) return;
+    state.dir = dir;
+    document.querySelectorAll('.mode-btn').forEach(b => b.classList.toggle('active', b === btn));
+    if (state.question && !state.answered) renderQuiz();
+    else renderHome();
+  });
+});
+
+/* 键盘快捷键：1~4 选择，Enter / 空格 继续 */
+document.addEventListener('keydown', e => {
+  if (!state.question) return;
+  if (e.key >= '1' && e.key <= '4' && !state.answered){
+    selectOption(Number(e.key) - 1);
+  } else if ((e.key === 'Enter' || e.key === ' ') && state.answered){
+    e.preventDefault();
+    nextCard();
+  }
+});
+
+/* 启动 */
+renderHome();
+</script>
+</body>
+</html>
